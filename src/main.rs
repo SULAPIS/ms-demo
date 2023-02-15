@@ -67,7 +67,7 @@ async fn main() {
         .route("/protected", get(protected))
         .route("/authorize", post(authorize));
 
-    let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
+    let addr = SocketAddr::from(([0, 0, 0, 0], 3030));
     tracing::debug!("listening on {}", addr);
 
     axum::Server::bind(&addr)
