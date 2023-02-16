@@ -14,8 +14,10 @@ phases:
 
 artifacts:
   files:
+    - appspec.yml
     - target/release/ms-demo
-  discard-paths: "yes"
+    - scripts/**/*
+
 
 cache:
   paths:

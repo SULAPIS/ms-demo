@@ -1,6 +1,6 @@
 #!/bin/bash
 
-APP_DIR="ms-demo"
+APP_DIR="rust-server"
 APP_PATH="/home/ec2-user/apps/${APP_DIR}"
 
 # No need to install node here, if it has been installed on server already

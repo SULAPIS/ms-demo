@@ -1,6 +1,6 @@
 #!/bin/bash
 
-APP_DIR="ms-demo"
+APP_DIR="rust-server"
 
 cd /home/ec2-user/apps/${APP_DIR}
 

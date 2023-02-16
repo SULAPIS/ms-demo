@@ -1,6 +1,6 @@
 #!/bin/bash
 
-APP_NAME="ms-demo"
+APP_NAME="rust-server"
 
 echo "Stopping ${APP_NAME} server"
 
