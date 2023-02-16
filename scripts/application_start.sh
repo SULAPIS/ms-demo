@@ -15,4 +15,4 @@ cd /home/ec2-user/apps/${APP_DIR}/target/release
 # npm install
 # pm2 start ecosystem.config.js
 
-JWT_SECRET=secret ./ms-demo &
+JWT_SECRET=secret ./ms-demo > /dev/null 2> /dev/null < /dev/null &
