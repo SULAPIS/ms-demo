@@ -4,6 +4,8 @@ APP_NAME="rust-server"
 
 echo "Stopping ${APP_NAME} server"
 
+sudo kill -9 $(sudo lsof -t -i:3030)
+
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
@@ -16,5 +18,3 @@ echo "Stopping ${APP_NAME} server"
 # else
 #   pm2 stop ${APP_NAME}
 # fi;
-
-kill -9 $(lsof -i:3030 -t)
