@@ -4,8 +4,6 @@ APP_NAME="rust-server"
 
 echo "Stopping ${APP_NAME} server"
 
-sudo kill -9 $(sudo lsof -t -i:3030)
-
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
@@ -18,3 +16,5 @@ sudo kill -9 $(sudo lsof -t -i:3030)
 # else
 #   pm2 stop ${APP_NAME}
 # fi;
+
+alias kill3030="fuser -k -n tcp 3030"
