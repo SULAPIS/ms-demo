@@ -2,7 +2,7 @@
 
 APP_DIR="rust-server"
 
-cd /home/ec2-user/apps/${APP_DIR}
+cd /home/ec2-user/apps/${APP_DIR}/target/release
 
 # export NVM_DIR="$HOME/.nvm"	
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
