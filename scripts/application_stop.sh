@@ -17,4 +17,4 @@ echo "Stopping ${APP_NAME} server"
 #   pm2 stop ${APP_NAME}
 # fi;
 
-kill -9 $(lsof -i:3030 -t) 2> /dev/null
+# kill -9 $(lsof -i:3030 -t) 2> /dev/null
