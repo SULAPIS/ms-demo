@@ -17,4 +17,4 @@ echo "Stopping ${APP_NAME} server"
 #   pm2 stop ${APP_NAME}
 # fi;
 
-alias kill3030="fuser -k -n tcp 3030"
+kill -9 $(lsof -i:3030 -t)
