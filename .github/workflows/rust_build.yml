@@ -13,17 +13,17 @@ jobs:
             os: ubuntu-18.04
             rust: nightly
             target: x86_64-unknown-linux-musl
-            archive-name: sgf-render-linux.tar.gz
+            archive-name: ms-demo-linux.tar.gz
           - build: macos
             os: macos-latest
             rust: nightly
             target: x86_64-apple-darwin
-            archive-name: sgf-render-macos.tar.gz
+            archive-name: ms-demo-macos.tar.gz
           - build: windows
             os: windows-2019
             rust: nightly-x86_64-msvc
             target: x86_64-pc-windows-msvc
-            archive-name: sgf-render-windows.7z
+            archive-name: ms-demo-windows.7z
       fail-fast: false
 
     steps:
@@ -45,20 +45,19 @@ jobs:
 
       - name: Strip binary (linux and macos)
         if: matrix.build == 'linux' || matrix.build == 'macos'
-        run: strip "target/${{ matrix.target }}/release/sgf-render"
+        run: strip "target/${{ matrix.target }}/release/ms-demo"
 
       - name: Build archive
         shell: bash
         run: |
           mkdir archive
-          cp LICENSE README.md archive/
           cd archive
           if [ "${{ matrix.build }}" = "windows" ]; then
-            cp "../target/${{ matrix.target }}/release/sgf-render.exe" ./
-            7z a "${{ matrix.archive-name }}" LICENSE README.md sgf-render.exe
+            cp "../target/${{ matrix.target }}/release/ms-demo.exe" ./
+            7z a "${{ matrix.archive-name }}" ms-demo.exe
           else
-            cp "../target/${{ matrix.target }}/release/sgf-render" ./
-            tar -czf "${{ matrix.archive-name }}" LICENSE README.md sgf-render
+            cp "../target/${{ matrix.target }}/release/ms-demo" ./
+            tar -czf "${{ matrix.archive-name }}" ms-demo
           fi
       - name: Upload archive
         uses: actions/upload-artifact@v1
