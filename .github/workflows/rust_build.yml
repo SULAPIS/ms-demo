@@ -13,17 +13,17 @@ jobs:
             os: ubuntu-18.04
             rust: nightly
             target: x86_64-unknown-linux-gnu
-            archive-name: ms-demo-linux.tar.gz
+            artifact-name: ms-demo-linux.tar.gz
           - build: macos
             os: macos-latest
             rust: nightly
             target: x86_64-apple-darwin
-            archive-name: ms-demo-macos.tar.gz
+            artifact-name: ms-demo-macos.tar.gz
           - build: windows
             os: windows-2019
             rust: nightly-x86_64-msvc
             target: x86_64-pc-windows-msvc
-            archive-name: ms-demo-windows.7z
+            artifact-name: ms-demo-windows.7z
       fail-fast: false
 
     steps:
@@ -42,20 +42,20 @@ jobs:
         if: matrix.build == 'linux' || matrix.build == 'macos'
         run: strip "target/${{ matrix.target }}/release/ms-demo"
 
-      - name: Build archive
+      - name: Build artifact
         shell: bash
         run: |
-          mkdir archive
-          cd archive
+          mkdir artifact
+          cd artifact
           if [ "${{ matrix.build }}" = "windows" ]; then
             cp "../target/${{ matrix.target }}/release/ms-demo.exe" ./
-            7z a "${{ matrix.archive-name }}" ms-demo.exe
+            7z a "${{ matrix.artifact-name }}" ms-demo.exe
           else
             cp "../target/${{ matrix.target }}/release/ms-demo" ./
-            tar -czf "${{ matrix.archive-name }}" ms-demo
+            tar -czf "${{ matrix.artifact-name }}" ms-demo
           fi
-      - name: Upload archive
-        uses: actions/upload-artifact@v1
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
         with:
-          name: ${{ matrix.archive-name }}
-          path: archive/${{ matrix.archive-name }}
+          name: ${{ matrix.artifact-name }}
+          path: artifact/${{ matrix.artifact-name }}
