@@ -45,7 +45,6 @@ jobs:
       - name: Build artifact
         shell: bash
         run: |
-          mkdir artifact
           cd artifact
           if [ "${{ matrix.build }}" = "windows" ]; then
             cp "../target/${{ matrix.target }}/release/ms-demo.exe" ./
